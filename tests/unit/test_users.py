@@ -46,7 +46,7 @@ async def test_list_users():
         mock_client.__aenter__.return_value = mock_client
         mock_client.__aexit__.return_value = None
         MockClient.return_value = mock_client
-        result = list_users("admin_token")
+        result = await list_users("admin_token")
         assert result["total"] == 2
 
 @pytest.mark.asyncio
@@ -60,5 +60,5 @@ async def test_get_preferences():
         mock_client.__aenter__.return_value = mock_client
         mock_client.__aexit__.return_value = None
         MockClient.return_value = mock_client
-        result = get_preferences("u1", "token123")
+        result = await get_preferences("u1", "token123")
         assert result["theme"] == "dark"
